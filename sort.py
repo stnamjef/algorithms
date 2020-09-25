@@ -53,6 +53,46 @@ def merge(a, low, mid, high):
         tmp[k:] = a[i:mid + 1]
     a[low:high + 1] = tmp[:]
 
+def quick_sort(data, start, end):
+    if start >= end:
+        return
+    else:
+        key = start
+        i = start + 1
+        j = end
+        while i <= j:
+            while data[i] <= data[key] and i <= end:
+                i += 1
+            while data[j] >= data[key] and j > start:
+                j -= 1
+            if i > j:
+                tmp = data[j]
+                data[j] = data[key]
+                data[key] = tmp
+            else:
+                tmp = data[i]
+                data[i] = data[j]
+                data[j] = tmp
+        quick_sort(data, start, j - 1)
+        quick_sort(data, j + 1, end)
+
+def quick_sort2(data, start, end):
+    if start >= end:
+        return
+    else:
+        key = start
+        j = start
+        for i in range(start + 1, end + 1):
+            if data[i] < data[key]:
+                j += 1
+                tmp = data[i]
+                data[i] = data[j]
+                data[j] = tmp
+        tmp = data[j]
+        data[j] = data[key]
+        data[key] = tmp
+        quick_sort2(data, start, j - 1)
+        quick_sort2(data, j + 1, end)
 
 if __name__ == '__main__':
     a = [3, 5, 2, 9, 10, 14, 4, 8]
