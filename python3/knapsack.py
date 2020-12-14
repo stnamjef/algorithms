@@ -168,7 +168,7 @@ def bound(u):
 
 
 if __name__ == '__main__':
-    print('Knapsack(Bredth first search):')
+    print('Knapsack(Breadth first search):')
     knapsack_bfs()
     print(f'max profit: {max_profit}')
     print(f'best set: {bestset}')
